@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <header>
+        <nav>
+            <h1>
+                Movie Theaters
+            </h1>
+        </nav>
+    </header>
+    <main>
+        <article id="seacher">
+            <!-- <label for="models">Models</label>
+            <input type="datalist" id="models"> -->
+            <article class="inlineSearch">
+                <input list="models" placeholder="User or Show" class="model">
+                <datalist id="models">
+                    <option value="Users">
+                    <option value="Shows">
+                </datalist>
+            </article>
+
+            <article class="inlineSearch">
+                <input list="modesOfSearch" placeholder="Type of Search" class="typeOfSearch">
+                <datalist id="modesOfSearch">
+                </datalist>
+            </article>
+
+            <article class="inlineSearch">
+                <input type="search" placeholder="Id" id="search">
+            </article>
+
+            <article class="inlineSearch">
+                <input type="submit" value="CLICK ME" id="submit">
+            </article>
+        </article>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>

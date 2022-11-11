@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+
+
+
+body{
+    margin: 0px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+nav{
+    background-color: rgb(225, 235, 230);
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav h1 {
+    color: #150A41;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2em;
+}
+nav h1:hover{
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc,
+    0 3px 0 #ccc, 0 4px 0 #ccc,
+    0 5px 0 #ccc, 0 6px 0 #ccc,
+    0 7px 0 #ccc, 0 8px 0 #ccc,
+    0 9px 0 #ccc, 0 10px 0 #ccc,
+    0 11px 0 #ccc, 0 12px 0 #ccc,
+    0 20px 30px rgba(0, 0, 0, 0.5);
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+}
+
+main{
+    height: 80vh;
+    background-color: rgb(225, 235, 230);
+}
+footer{
+    background-color: #150A41;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inlineSearch{
+    display: inline;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    width: inherit;
+}
+
+.inlineSearch input{
+    height: 6em;
+    border-radius: 14em;
+    text-align: center;
+    font-family: 'Oswald';
+    width: 13vw;
+}
+
+#seacher{
+    background-color: #150A41;
+    border-radius: 10em;
+    display: flex;
+    width: 60vw;
+    height: 10vh;
+    color: rgb(225, 235, 230);
+    margin: 20em auto;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
