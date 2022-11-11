@@ -68,8 +68,26 @@ footer{
     width: 60vw;
     height: 10vh;
     color: rgb(225, 235, 230);
-    margin: 20em auto;
+    margin: 9em auto 2em;
     align-items: center;
     flex-wrap: nowrap;
     flex-direction: row;
 }
+#content{
+    margin: 4em auto;
+    background-color: #150A41;
+    width: 67vw;
+    height: 30vh;
+    display: none;
+    color: #ccc;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    text-align: center;
+    overflow: scroll;
+}
+
+.contentDiv{
+    display: block;
+}
+

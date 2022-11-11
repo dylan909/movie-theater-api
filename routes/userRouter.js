@@ -14,7 +14,11 @@ userRouter.get('/all', async (req, res) => {
 userRouter.get('/:id', async(req, res) => {
     try {
         const user = await User.findByPk(req.params.id)
-        res.send(user)
+        if (user){
+            res.send(user)
+        }else{
+            res.status(404).send({})
+        }
     } catch (error) {
         res.sendStatus(500).send(error)
     }

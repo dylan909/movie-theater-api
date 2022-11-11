@@ -19,6 +19,10 @@ const typeOfSearchValues = document.querySelector('.typeOfSearch')
 const searcher = document.querySelector('#search')
 
 
+const content = document.querySelector('#content')
+const contentCreator = document.querySelector('.contentCreator')
+
+
 function populateTypeUser(){
 
     typeOfSearch.innerHTML = ''
@@ -83,13 +87,32 @@ chosenModel.addEventListener('input', (e) => {
 
 
 async function searchAllUsers(){
-    fetch("http:localhost:3000/user/all")
+    let searchUser = 'searchUser'
+    fetch("http://localhost:3000/user/all")
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => makeContent(data, searchUser))
 }
 
+async function seachByUserId(id){
+    let searchUser = 'searchUser'
+    fetch(`http://localhost:3000/user/${id}`)
+        .then((response) => response.json())
+        .then((data) => makeContent([data], searchUser))
+}
 
+async function searchAllShows(){
+    const searchShows = 'searchShows'
+    fetch('http://localhost:3000/shows/all')
+        .then((response) => response.json())
+        .then((data) => makeContent(data, searchShows))
+}
 
+async function searchShowsByID(id){
+    const searchShows = 'searchShows'
+    fetch(`http://localhost:3000/shows/oneShow/${id}`)
+        .then((response) => response.json())
+        .then((data) => makeContent([data], searchShows))
+}
 
 
 const submit = document.querySelector("#submit")
@@ -100,5 +123,67 @@ submit.addEventListener('click', () => {
     if (typeOfSearchValues.value === 'All' && chosenModel.value === 'Users'){
         searchAllUsers()
     }
+    if(typeOfSearchValues.value === 'By Id' && chosenModel.value === 'Users' && searcher.value){
+        seachByUserId(searcher.value)
+    }
+    if(typeOfSearchValues.value === 'Shows Watched' && chosenModel.value === 'Users' && searcher.value){
+        seachByUserWatched(searcher.value)
+    }
+    if(typeOfSearchValues.value === 'All' && chosenModel.value === 'Shows'){
+        searchAllShows()
+    }
+    if(typeOfSearchValues.value === 'By Id' && chosenModel.value === 'Shows' && searcher.value){
+        searchShowsByID(searcher.value)
+    }
 
 })
+
+
+
+function makeContent(obj, type){
+    content.innerHTML = ''
+    console.log(obj)
+    if (type === 'searchUser'){
+        content.style.display = 'flex'
+        content.style.justifyContent = 'space-around'
+        for(i = 0; i <= obj.length -1; i++){
+            const div = document.createElement('div')
+            const id = document.createElement('h1')
+            const username = document.createElement('h2')
+            const password = document.createElement('h2')
+            id.innerHTML = obj[i].id
+            username.innerHTML = obj[i].username
+            password.innerHTML = obj[i].password
+
+            div.setAttribute('class', 'contentDiv')
+            console.log(id, username, password)
+
+            div.append(id, username, password)
+            content.append(div)
+    }}
+    else if (type === 'searchShows'){
+        content.style.display = 'flex'
+        content.style.justifyContent = 'space-around'
+        content.style.flexWrap = 'wrap'
+        for(i = 0; i <= obj.length -1; i++){
+            const div = document.createElement('div')
+            const id = document.createElement('h2')
+            const title = document.createElement('h1')
+            const genre = document.createElement('h2')
+            const rating = document.createElement('h2')
+            const status = document.createElement('h2')
+            id.innerHTML = obj[i].id
+            title.innerHTML = obj[i].title
+            genre.innerHTML = obj[i].genre
+            rating.innerHTML = obj[i].rating
+            status.innerHTML = obj[i].status
+
+            div.style.border = '1px solid white'
+
+            div.append(title, id, genre, rating , status)
+            content.append(div)
+
+        }
+    }
+
+}
